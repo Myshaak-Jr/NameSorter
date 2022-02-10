@@ -33,6 +33,7 @@ function addInput() {
 }
 
 function buttonActivate(e) {
+	if (wordsContainer.children.length == 1) return;
 	switch (mode) {
 		case "input":
 			shuffle(e);
@@ -46,7 +47,7 @@ function buttonActivate(e) {
 function shuffle(e) {
 	// change mode
 	mode = "shuffled";
-	document.getElementById("button").innerText = "RESETOVAT";
+	document.getElementById("button").innerText = "UPRAVIT";
 	wordsContainer.style.flexDirection = "column";
 
 	// disable input
@@ -99,4 +100,6 @@ function reset(e) {
 		word.setAttribute("contenteditable", true);
 	}
 
+	// add the blank input
+	addInput();
 }
