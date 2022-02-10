@@ -75,7 +75,7 @@ function shuffle(e) {
 	}
 
 	// sort words by order
-	[...wordsContainer.children].sort((a,b)=>a.style.order>b.style.order?1:-1).forEach(node=>wordsContainer.appendChild(node));
+	[...wordsContainer.children].sort((a,b)=>parseInt(a.style.order)>parseInt(b.style.order)?1:-1).forEach(node=>wordsContainer.appendChild(node));
 
 	// console.log(Array.from(wordsContainer.children).map(a => [a.innerHTML, a.style.order]));
 
@@ -89,7 +89,7 @@ function shuffle(e) {
 	}
 
 	// sort again (for copying)
-	[...wordsContainer.children].sort((a,b)=>a.style.order>b.style.order?1:-1).forEach(node=>wordsContainer.appendChild(node));
+	[...wordsContainer.children].sort((a,b)=>parseInt(a.style.order)>parseInt(b.style.order)?1:-1).forEach(node=>wordsContainer.appendChild(node));
 
 	// console.log(Array.from(wordsContainer.children).map(a => [a.innerHTML, a.style.order]));
 }
