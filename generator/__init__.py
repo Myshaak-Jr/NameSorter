@@ -1,9 +1,9 @@
 from flask import Flask, render_template
+import os.path
 
-
-app = Flask(__file__)
+app = Flask(__name__)
 
 
 @app.route("/")
 def index():
-    render_template("index.html")
+	return render_template("index.html")
