@@ -65,7 +65,8 @@ function shuffle(e) {
 	let found = 0;
 	for (let index = 0; index < wordsContainer.children.length; index++) {
 		const word = wordsContainer.children[index];
-		if (word.innerHTML == "Richard Smatana") {
+		
+		if (word.innerHTML.match(/richard smatana/i)) {
 			// swap it with the first word
 			[word.style.order, wordsContainer.children[0].style.order] = [wordsContainer.children[0].style.order, word.style.order];
 			found = 1;
