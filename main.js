@@ -1,4 +1,5 @@
 const wordsContainer = document.getElementById("words-container");
+var mode = "input"
 
 
 function keyPressed(e) {
@@ -31,9 +32,33 @@ function addInput() {
 	wordsContainer.children[wordsContainer.children.length - 1].focus(); // focus on last input
 }
 
+function buttonActivate(e) {
+	switch (mode) {
+		case "input":
+			shuffle(e);
+			break;
+		case "shuffled":
+			reset(e);
+			break;
+	}
+}
+
 function shuffle(e) {
+	// change mode
+	mode = "shuffled";
+	document.getElementById("button").innerText = "RESETOVAT";
+	wordsContainer.style.flexDirection = "column";
+
+	// disable input
+	for (let index = 0; index < wordsContainer.children.length; index++) {
+		const word = wordsContainer.children[index];
+		word.setAttribute("contenteditable", false);
+	}
+
 	// remove the blank input box
-	wordsContainer.removeChild(wordsContainer.children[wordsContainer.children.length - 1]);
+	if (wordsContainer.children[wordsContainer.children.length - 1].innerHTML == "") {
+		wordsContainer.removeChild(wordsContainer.children[wordsContainer.children.length - 1]);
+	}
 
 	// control for name "Richard Smatana"
 	let found = 0;
@@ -48,7 +73,7 @@ function shuffle(e) {
 		}
 	}
 
-	console.log(Array.from(wordsContainer.children).map(a => [a.innerHTML, a.style.order]));
+	// console.log(Array.from(wordsContainer.children).map(a => [a.innerHTML, a.style.order]));
 
 	for (let index = found; index < wordsContainer.children.length; index++) {
 		const randomIndex = Math.floor(Math.random() * (wordsContainer.children.length - found)) + found;
@@ -59,7 +84,19 @@ function shuffle(e) {
 		[wordsContainer.children[randomIndex].style.order, wordsContainer.children[index].style.order];
 	}
 
-	console.log(Array.from(wordsContainer.children).map(a => [a.innerHTML, a.style.order]));
+	// console.log(Array.from(wordsContainer.children).map(a => [a.innerHTML, a.style.order]));
+}
 
-	wordsContainer.style.flexDirection = "column";
+function reset(e) {
+	// change mode
+	mode = "input";
+	document.getElementById("button").innerText = "ZAMÍCHEJ";
+	wordsContainer.style.flexDirection = "row";
+
+	// enable input
+	for (let index = 0; index < wordsContainer.children.length; index++) {
+		const word = wordsContainer.children[index];
+		word.setAttribute("contenteditable", true);
+	}
+
 }
