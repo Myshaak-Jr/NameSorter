@@ -28,6 +28,12 @@ div {
 	max-width: 60%;
 }
 
+@media screen and (max-width: 600px) {
+	#words-container {
+		max-width: 95%;
+	}
+}
+
 
 /* OTHER ELEMENTS */
 h1 {
