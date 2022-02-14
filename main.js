@@ -33,7 +33,7 @@ function addInput() {
 }
 
 function buttonActivate(e) {
-	if (wordsContainer.children.length == 1) return;
+	if (wordsContainer.children.length == 2) return;
 	switch (mode) {
 		case "input":
 			shuffle(e);
